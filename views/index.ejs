@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffe6f2; 
+    color: #800040; 
+    margin: 0;
+    padding: 0;
+}
+
+#d1 h1 {
+    text-align: center;
+    color: #ff0066; 
+    font-size: 2.5em;
+    margin-top: 20px;
+}
+
+.d2 form {
+    background-color: #ffb3d9; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.d2 input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ff0066;
+    border-radius: 5px;
+}
+
+.d2 button {
+    background-color: #ff4d88; 
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.d2 button:hover {
+    background-color: #e6005c;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff0f5; 
+}
+
+thead th {
+    background-color: #ff4d88; 
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+tbody tr {
+    text-align: center;
+    border-bottom: 1px solid #ffb3d9;
+}
+
+tbody td {
+    padding: 10px;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+button a {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #fff;
+}
+
+button {
+    margin: 5px;
+    background-color: #ff4d88;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e6005c;
+}
+
+</style>
+<body>
+ <div id="d1"><h1>book store</h1></div>
+  <div class="d2">
+    
+    <form action="/addData" method="post">
+        <input id="i1" type="text" name="book" placeholder="Enter book name"> <br>
+        <input id="i2"  type="text" name="author" placeholder="Enter author of book"> <br>
+        <input id="i1" type="text" name="year" placeholder="Enter book release year"> <br>
+        <input id="i2" type="text" name="price" placeholder="Enter book price"> <br>
+        <button type="submit">submit</button>
+    </form>
+  </div>
+    <table  border="2">
+        <thead>
+            <tr>
+            <th>book name</th>
+            <th>author name</th>
+            <th>release year</th>
+            <th>book price</th>
+            <th colspan="2">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            <%data.map((e,i)=>{%>
+                <tr>
+                    <td><%=e.book%></td>
+                    <td><%=e.author%></td>
+                    <td><%=e.year%></td>
+                    <td><%=e.price%></td>
+                    <td><button type="submit"><a href="/editData?id=<%=e.id%>">edit</a></button></td>
+                    <td><button type="submit"><a href="/deleteData?id=<%=e.id%>">delete</a></button></td>
+                </tr>
+            <%});%>
+        </tbody>
+    </table>
+</body>
+</html>
